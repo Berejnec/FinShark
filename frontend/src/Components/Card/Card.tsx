@@ -1,26 +1,29 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import "./Card.css";
+import { CompanySearch } from "../../company";
+import AddPortfolio from "../Portfolio/AddPortfolio/AddPortfolio";
 
 type Props = {
-  companyName: string;
-  ticker: string;
-  price: number;
+  id: string;
+  searchResult: CompanySearch;
+  onPortfolioCreate: (e: SyntheticEvent) => void;
 };
 
-const Card = ({ companyName, ticker, price }: Props) => {
+const Card = ({ id, searchResult, onPortfolioCreate }: Props) => {
   return (
-    <div className="card">
+    <div key={id} id={id} className="card">
       <div className="details">
-        <h2>{companyName}</h2>
-        <h3>{ticker}</h3>
-        <p>${price}</p>
+        <h2>{searchResult.name}</h2>
+        <h3>{searchResult.symbol}</h3>
+        <p>${searchResult.currency}</p>
       </div>
       <p className="info">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur quos
-        inventore eligendi error quaerat esse ut fugit, a eaque, itaque
-        architecto recusandae? Perferendis eaque dolor temporibus alias cum et.
-        Repudiandae.
+        {searchResult.exchangeShortName} - {searchResult.stockExchange}
       </p>
+      <AddPortfolio
+        onPortfolioCreate={onPortfolioCreate}
+        symbol={searchResult.symbol}
+      />
     </div>
   );
 };
