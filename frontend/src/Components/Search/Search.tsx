@@ -21,8 +21,16 @@ const Search = ({ onSearchSubmit, search, handleSearchChange }: Props) => {
             value={search}
             onChange={handleSearchChange}
           ></input>
+          <button
+            onClick={onSearchSubmit}
+            type="button"
+            className="px-8 py-3 font-normal rounded text-white bg-lightGreen hover:opacity-80"
+          >
+            Search
+          </button>
         </form>
       </div>
+      <div></div>
     </section>
   );
 };
