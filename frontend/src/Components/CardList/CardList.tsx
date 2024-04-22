@@ -10,7 +10,7 @@ type Props = {
 
 const CardList = ({ searchResult, onPortfolioCreate }: Props) => {
   return (
-    <>
+    <div>
       {searchResult.length > 0 ? (
         searchResult.map((result) => {
           return (
@@ -23,9 +23,11 @@ const CardList = ({ searchResult, onPortfolioCreate }: Props) => {
           );
         })
       ) : (
-        <h2>No results</h2>
+        <p className="mb-3 mt-3 text-xl font-semibold text-center md:text-xl">
+          No results!
+        </p>
       )}
-    </>
+    </div>
   );
 };
 
